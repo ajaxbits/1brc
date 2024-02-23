@@ -25,10 +25,16 @@
             cargo
             cargo-watch
             rustc
+            clippy
+            gcc
+            rustfmt
+            hyperfine
           ]
           ++ lib.optionals (system == "aarch64-darwin") [
             darwin.libiconv
           ];
+          
+        RUST_SRC_PATH = "${pkgsFor.${system}.rust.packages.stable.rustPlatform.rustLibSrc}";
       };
     });
   };
